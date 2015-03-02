@@ -1,0 +1,13 @@
+{
+  "name": "jones-api",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "npm i && nodemon api.js"
+  },
+  "dependencies": {
+    "express": "3.4.8",
+    "pretty-error": "~1.1.1",
+    "mongoose": "~3.8.18"
+  }
+}
