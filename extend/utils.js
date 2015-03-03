@@ -1,6 +1,8 @@
 var appPath = process.cwd() + "/",
     fs = require('fs'),
-    path = require("path");
+    path = require("path"),
+    dataSources = require("../config/data_sources.json"),
+    mongo = require('mongoose');
 
 
 // Register all routes dinamically
@@ -27,15 +29,15 @@ exports.responseJSON = function (status, res, content) {
   .end(JSON.stringify(content));
 }
 
-// Connect to mongodb
-exports.mongoConnect = function (app) {
-  var db = app.custom.db,
-      dbName = app.custom.settings.DATABASE_NAME,
-      dbHost = app.custom.settings.DATABASE_HOST;
-  db.connect(dbHost + dbName, function (error) {
-    if (error) {
-      console.log('\x1b[31m'+error);
-    }
-  });
-  return db;
+// Connect to dataSource
+exports.dataSource = function (app) {
+var ds = dataSources;
+  return function (dbName) {
+    mongo.connect(ds[dbName].host + ds[dbName].database, function (error) {
+      if (error) {
+        console.log('\x1b[31m'+error);
+      }
+    });
+    return mongo;
+  }
 }

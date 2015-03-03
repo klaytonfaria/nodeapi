@@ -7,5 +7,14 @@
     "database"  : "node-mongo-dumbPhrases",
     "username"  : "",
     "password"  : ""
+  },
+  "mongo_local": {
+    "name"      : "mongo",
+    "connector" : "mongod",
+    "host"      : "mongodb://localhost/",
+    "port"      : 27017,
+    "database"  : "local",
+    "username"  : "",
+    "password"  : ""
   }
 }

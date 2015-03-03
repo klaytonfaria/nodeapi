@@ -1,5 +1,5 @@
 module.exports = function(app) {
-	var db = app.custom.utils.mongoConnect(app),
+	var db = app.custom.utils.dataSource(app)("mongo"),
 			Schema = db.Schema,
 			postsSchema = new Schema({
 				"type"		 : String,
