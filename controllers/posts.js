@@ -16,7 +16,7 @@ module.exports = function(app) {
     },
 
     // Get one post
-    getOne: function(req, res) {
+    getById: function(req, res) {
       var filter;
       if (req.params && req.params.id) {
         filter = {_id:req.params.id};
