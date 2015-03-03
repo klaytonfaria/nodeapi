@@ -1,14 +1,26 @@
 {
-  "name": "jones-api",
+  "name": "node-api",
   "version": "0.0.1",
   "private": true,
+  "repository"  : {
+    "type": "git",
+    "url": "https://github.com/klaytonfaria/nodeapi.git"
+  },
+  "bugs"        : "https://github.com/klaytonfaria/nodeapi/issues",
+  "contributors": "https://github.com/klaytonfaria/nodeapi/graphs/contributors",
+  "licenses"    : [
+    {
+      "type": "MIT",
+      "url": "https://raw.github.com/klaytonfaria/nodeapi/master/LICENSE"
+    }
+  ],
   "scripts": {
-    "preinstall" : "sh preinstall.sh",
-    "start": "npm i && nodemon app.js"
+    "start": "npm i &&  nodemon app.js"
   },
-  "globalDependencies" : {
-    "forever": "~0.14.1"
+  "engines": {
+    "node": "~0.10.24"
   },
+  "engineStrict": true,
   "dependencies": {
     "express": "~3.4.8",
     "mongoose": "~3.8.18"
