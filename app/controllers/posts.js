@@ -48,14 +48,14 @@ module.exports = function(app) {
       var doc = {
             "type": "post",
             "slug": "",
-            "url": "",
-            "title": "title",
-            "content": "testetestetetsestetetststestetststdfdgd",
-            "excerpt": "exports",
+            "url": "/posts/#postId",
+            "title": req.param("title") || "",
+            "content": req.param("content") || "",
+            "excerpt": req.param("excerpt") || "",
             "date": new Date(),
             "modified": new Date(),
-            "categories": ["category"],
-            "tags": ["tag"]
+            "categories": ["category"] || [],
+            "tags": ["tag"] || []
           };
       model.insert(doc,
         function(err, data) {
@@ -72,7 +72,8 @@ module.exports = function(app) {
     update: function(req, res) {
       var id = req.params.id,
           doc = {
-            "title": req.param('name')
+            "title": req.param('name'),
+            "modified": new Date()
           };
       model.update(id, doc, function(err, data) {
         if(err) {
