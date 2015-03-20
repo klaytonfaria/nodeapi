@@ -1,23 +1,21 @@
 module.exports = function(app) {
-  var model = require("../models/postsModel")(app),
-      slugfy = require("slug"),
-      slugs = require("../models/slugsModel")(app);
+  var model = require("../models/slugsModel")(app);
 
   return {
-    name: "posts",
+    name: "slugs",
 
-    // Get all posts
+    // Get all slugs
     getAll: function(req, res) {
       model.select({}, function(err, data) {
         if(err) {
           app.custom.utils.responseJSON(500, res, err);
         } else {
-          app.custom.utils.responseJSON(200, res, {posts : data});
+          app.custom.utils.responseJSON(200, res, {slugs : data});
         }
       });
     },
 
-    // Get one post
+    // Get one slug
     getById: function(req, res) {
       var filter;
       if (req.params && req.params.id) {
@@ -27,65 +25,56 @@ module.exports = function(app) {
         if(err) {
           app.custom.utils.responseJSON(500, res, err);
         } else {
-          app.custom.utils.responseJSON(200, res, {posts : data});
+          app.custom.utils.responseJSON(200, res, {slugs : data});
         }
       });
     },
 
-    // Remove post
+    // Remove slug
     remove: function(req, res) {
       model.remove(req.params.id,
         function(err, data) {
           if(err) {
             app.custom.utils.responseJSON(500, res, err);
           } else {
-            app.custom.utils.responseJSON(200, res, {message: 'deleted'});
+            app.custom.utils.responseJSON(200, res, {message: "deleted"});
           }
         }
       );
     },
 
-    // Create post
+    // Create slug
     insert: function(req, res) {
       var doc = {
-            "type": "post",
-            "slug": slugfy(req.param("title")),
-            "url": "/posts/" + slugfy(req.param("title")),
-            "title": req.param("title") || "",
-            "content": req.param("content") || "",
-            "excerpt": req.param("excerpt") || "",
+            "slug": slugfy(req.param("slug")),
+            "url": "/slugs/#slugId",
             "date": new Date(),
-            "modified": new Date(),
-            "categories": ["category"] || [],
-            "tags": ["tag"] || []
+            "modified": new Date()
           };
-
       model.insert(doc,
         function(err, data) {
           if(err) {
             app.custom.utils.responseJSON(500, res, err);
           } else {
-
-            slugs.insert(doc);
-
-            app.custom.utils.responseJSON(200, res, {message: 'created'});
+            app.custom.utils.responseJSON(200, res, {message: "created"});
           }
         }
       );
     },
 
-    // Update post
+    // Update slug
     update: function(req, res) {
       var id = req.params.id,
           doc = {
-            "title": req.param('name'),
+            "slug": slugfy(req.param("slug")),
+            "url": req.param("url"),
             "modified": new Date()
           };
       model.update(id, doc, function(err, data) {
         if(err) {
           app.custom.utils.responseJSON(500, res, err);
         } else {
-          app.custom.utils.responseJSON(200, res, {message: 'updated'});
+          app.custom.utils.responseJSON(200, res, {message: "updated"});
         }
       });
     }

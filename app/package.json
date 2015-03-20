@@ -2,13 +2,13 @@
   "name": "node-api",
   "version": "0.0.1",
   "private": true,
-  "repository"  : {
+  "repository": {
     "type": "git",
     "url": "https://github.com/klaytonfaria/nodeapi.git"
   },
-  "bugs"        : "https://github.com/klaytonfaria/nodeapi/issues",
+  "bugs": "https://github.com/klaytonfaria/nodeapi/issues",
   "contributors": "https://github.com/klaytonfaria/nodeapi/graphs/contributors",
-  "licenses"    : [
+  "licenses": [
     {
       "type": "MIT",
       "url": "https://raw.github.com/klaytonfaria/nodeapi/master/LICENSE"
@@ -26,6 +26,7 @@
     "mongoose": "~3.8.18"
   },
   "devDependencies": {
-    "pretty-error": "~1.1.1"
+    "pretty-error": "~1.1.1",
+    "slug": "~0.8.0"
   }
 }
