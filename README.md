@@ -1,2 +1,2 @@
 # nodeapi
-(WIP node.js restful api )
+(WIP node.js restful && graphql api )
