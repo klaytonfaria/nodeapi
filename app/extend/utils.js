@@ -33,7 +33,7 @@ exports.responseJSON = function (status, res, content) {
 exports.dataSource = function (app) {
 var ds = dataSources;
   return function (dbName) {
-    mongo.connect(ds[dbName].host + ds[dbName].database, function (error) {
+    mongo.connect("mongodb://jones:007jones@ds111623.mlab.com:11623/cupcake", function (error) {
       if (error) {
         console.log('\x1b[31m'+error);
       }
