@@ -2,9 +2,9 @@
   "mongo": {
     "name"      : "mongo",
     "connector" : "mongod",
-    "host"      : "mongodb://localhost/",
+    "host"      : "mongodb://jones:007jones@ds111623.mlab.com:11623/",
     "port"      : 27017,
-    "database"  : "node-mongo-dumbPhrases",
+    "database"  : "cupcake",
     "username"  : "",
     "password"  : ""
   },
